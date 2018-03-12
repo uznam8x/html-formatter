@@ -53,12 +53,12 @@ var tidy = function (el) {
 
   el = el
     .replace(/>\n([\w+!@#$%^&*\(\)_+\-=\?\:;"'\/\.,\[\]\{\}\|]+)/g, '>$1')
-    .replace(/([\w+!@#$%^&*\(\)_+\-=\?\:;"'\/\.,\[\]\{\}\|])\n\s+<\//g, '$1</')
+    .replace(/([\w+!@#$%^&*\(\)_+\-=\?\:;"'\/\.,\[\]\{\}\|])\s+<\//g, '$1</')
     .replace(/<[^\/]([^>]*?)>\s+<\//g, function (match, capture) {
       if (match.indexOf('/>') > -1) {
         return match;
       }
-      return match.replace(/\s\s+/g, '');
+      return match.replace(/\s\s+|\n/g, '');
     })
 
   convert.comment.forEach(function (source, index) {
