@@ -87,7 +87,6 @@ var render = function(el, opt) {
   el = minify(el);
   el = line(el);
   el = tidy(el);
-  console.log(el);
 
   return el;
 };
