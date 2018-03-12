@@ -1,0 +1,20 @@
+{
+  "name": "html-formatter",
+  "version": "1.0.0",
+  "description": "html prettify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uznam8x/html-formatter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uznam8x/html-formatter/issues"
+  },
+  "homepage": "https://github.com/uznam8x/html-formatter#readme"
+}
