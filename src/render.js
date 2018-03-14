@@ -78,7 +78,6 @@ var render = function (el, opt) {
   el = closing(el);
   el = comment(el);
   el = entity(el);
-
   el = minify(el);
   el = line(el);
   el = tidy(el);
