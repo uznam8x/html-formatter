@@ -8,7 +8,7 @@ var closing = function(el) {
     if (single.indexOf(capture) > -1) {
       return (match.substring(0, match.length - 1) + ' />').replace(/\/\s\//g, '/');
     }
-    return match.replace('/>', '></' + capture + '>');
+    return match.replace(/[\s]?\/>/g, '></' + capture + '>');
   });
   return el;
 };

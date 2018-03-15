@@ -1,6 +1,6 @@
 {
   "name": "html-formatter",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "html prettify",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/uznam8x/html-formatter.git"
   },
   "keywords": [],
-  "author": "uznam8x, prisf, codenut, html, minify, prettify, beautify",
+  "author": "uznam8x, prisf, codenut, html, minify, prettify, beautify, html framework",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/uznam8x/html-formatter/issues"
