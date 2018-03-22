@@ -51,15 +51,9 @@ var tidy = function (el) {
     });
   });
 
-  el = el
-    .replace(/>\n([\w+!@#$%^&*\(\)_+\-=\?\:;"'\/\.,\[\]\{\}\|]+)/g, '>$1')
-    .replace(/([\w+!@#$%^&*\(\)_+\-=\?\:;"'\/\.,\[\]\{\}\|])\s+<\//g, '$1</')
-    .replace(/<[^\/]([^>]*?)>\s+<\//g, function (match, capture) {
-      if (match.indexOf('/>') > -1) {
-        return match;
-      }
-      return match.replace(/\s\s+|\n/g, '');
-    })
+  el = el.replace(/>[^<]*?[^><\/\s][^<]*?<\/|>\s+[^><\s]|<script[^>]*>\s+<\/script>/g, (match)=>{
+    return match.replace(/\n|\t/g, '');
+  })
 
   convert.comment.forEach(function (source, index) {
     el = el.replace(new RegExp('<!--[^>]*' + index + ' : #!#] -->', 'g'), function (match) {
