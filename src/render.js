@@ -11,11 +11,12 @@ var convert = {
 
 var comment = function (el) {
   convert.comment = [];
-  el = el.replace(/(<!--[^>]*?>)/g, function (match) {
+
+  el = el.replace(/(<!--(.|\n)*?-->)/g, function (match) {
     convert.comment.push(match);
     return '<!-- [#!# : ' + (convert.comment.length - 1) + ' : #!#] -->';
   });
-  return el
+  return el;
 };
 
 var line = function (el) {
@@ -51,20 +52,26 @@ var tidy = function (el) {
     });
   });
 
-  el = el.replace(/>[^<]*?[^><\/\s][^<]*?<\/|>\s+[^><\s]|<script[^>]*>\s+<\/script>/g, (match)=>{
+
+  el = el.replace(/>[^<]*?[^><\/\s][^<]*?<\/|>\s+[^><\s]|<script[^>]*>\s+<\/script>|<(\w+)>\s+<\/(\w+)|<(\w+)[^>]*>\s<\/(\w+)>|<([\w\-]+)[^>]*[^\/]>\s+<\/([\w\-]+)>/g, function(match) {
     return match.replace(/\n|\t/g, '');
   })
 
+  var generateTab = function(cnt){
+    var t = '';
+    for (var c = 0; c < cnt; c++) {
+      t += '\t';
+    }
+    return t;
+  }
   convert.comment.forEach(function (source, index) {
     el = el.replace(new RegExp('<!--[^>]*' + index + ' : #!#] -->', 'g'), function (match) {
       var cnt = /%(\d+)%/g.exec(match);
-      var t = '';
-      for (var c = 0; c < cnt[1]; c++) {
-        t += '\t';
-      }
-      return source.replace(/\n/g, '\n' + t);
+      var t = generateTab(cnt[1]);
+      return source.replace(/\n/g, '\n'+t);
     });
   });
+
   return el.substring(1, el.length - 1);
 };
 

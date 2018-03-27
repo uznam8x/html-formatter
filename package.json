@@ -1,6 +1,6 @@
 {
   "name": "html-formatter",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "html prettify",
   "main": "index.js",
   "scripts": {
